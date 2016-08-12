@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <include layout="@layout/head1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="2dp"
+        android:background="#ccc" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="香哈头条" />
+
+    <include layout="@layout/hottitle" android:id="@+id/diyigetoutiao" />
+
+    <!--<include layout="@layout/hottitle" />-->
+
+    <include layout="@layout/hottitle" android:id="@+id/diergetoutiao"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#ccc" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="人气美食家" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="53dp">
+
+        <LinearLayout
+            android:id="@+id/touxianglin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="精选专题" />
+
+    <include layout="@layout/topic_jingxuan" android:id="@+id/topfirst"/>
+    <include layout="@layout/topic_jingxuan" android:id="@+id/topsecond"/>
+    <include layout="@layout/topic_jingxuan" android:id="@+id/topthird"/>
+</LinearLayout>

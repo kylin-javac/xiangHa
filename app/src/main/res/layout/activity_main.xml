@@ -3,14 +3,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ligang.xiangha.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:gravity="center"
+            android:id="@+id/rb_learn_cooke"
+            android:layout_width="0dp"
+            android:drawableTop="@drawable/rb_learn_cooke"
+            android:layout_height="wrap_content"
+            android:text="学做菜"
+            android:layout_weight="1"
+            android:button="@null" />
+        <RadioButton
+            android:gravity="center"
+            android:id="@+id/rb_shop"
+            android:layout_width="0dp"
+            android:drawableTop="@drawable/rb_shop"
+            android:layout_height="50dp"
+            android:text="商城"
+            android:layout_weight="1"
+            android:button="@null" />
+
+
+        <RadioButton
+            android:gravity="center"
+            android:id="@+id/rb_bbs"
+            android:drawableTop="@drawable/rb_bbs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="社区"
+            android:layout_weight="1"
+            android:button="@null" />
+
+
+        <RadioButton
+            android:gravity="center"
+            android:id="@+id/rb_message"
+            android:layout_width="0dp"
+            android:text="消息"
+            android:drawableTop="@drawable/rb_message"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null" />
+
+        <RadioButton
+            android:gravity="center"
+            android:id="@+id/rb_me"
+            android:layout_width="0dp"
+            android:text="我的"
+            android:drawableTop="@drawable/rb_bbs"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null" />
+    </RadioGroup>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:id="@+id/container"
+        android:layout_above="@id/rg"
+        android:layout_height="match_parent"/>
 </RelativeLayout>
