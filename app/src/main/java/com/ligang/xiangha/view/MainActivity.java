@@ -1,9 +1,10 @@
-package com.ligang.xiangha;
+package com.ligang.xiangha.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RadioGroup;
 
+import com.ligang.xiangha.R;
 import com.ligang.xiangha.fragment.LearnCookeFragment;
 
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
