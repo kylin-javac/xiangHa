@@ -8,6 +8,7 @@
     <ImageView
         android:layout_width="80dp"
         android:id="@+id/pic"
+        android:scaleType="centerCrop"
         android:src="@mipmap/ic_launcher"
         android:layout_height="60dp" />
     <!--pic,titile,jinxuan,pcount,reviewcount-->

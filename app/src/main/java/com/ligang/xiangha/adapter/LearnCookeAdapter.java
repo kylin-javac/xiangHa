@@ -1,4 +1,4 @@
-package com.ligang.xiangha.fragment;
+package com.ligang.xiangha.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

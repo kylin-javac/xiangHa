@@ -5,6 +5,6 @@ package com.ligang.xiangha.view;
  * Email:kylin_javac@outlook.com
  * Desc:
  */
-public interface MvpView<T> {
-    void Show(T t);
+public interface MvpView {
+    void Show(Object t,int tag);
 }

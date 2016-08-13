@@ -7,5 +7,7 @@ package com.ligang.xiangha.utils;
  */
 public interface Goable {
     String SERVER="http://api.xiangha.com/";
-    String XIANGHATOUXIAO="zhishi/getNousList?type=new&page=%d";
+    String XIANGHATOUXIAO="main6/index/baseData?";
+    String SHOUYE_JINGCAISHENGHUO = SERVER + "main6/index/getTieList?page=1&pageTime=";
+
 }

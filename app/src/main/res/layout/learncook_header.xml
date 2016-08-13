@@ -19,11 +19,15 @@
         android:layout_marginTop="10dp"
         android:text="香哈头条" />
 
-    <include layout="@layout/hottitle" android:id="@+id/diyigetoutiao" />
+    <include
+        android:id="@+id/diyigetoutiao"
+        layout="@layout/hottitle" />
 
     <!--<include layout="@layout/hottitle" />-->
 
-    <include layout="@layout/hottitle" android:id="@+id/diergetoutiao"/>
+    <include
+        android:id="@+id/diergetoutiao"
+        layout="@layout/hottitle" />
 
     <View
         android:layout_width="match_parent"
@@ -38,14 +42,16 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="53dp">
+        android:layout_height="53dp"
+        android:layout_marginTop="5dp">
 
         <LinearLayout
             android:id="@+id/touxianglin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" />
+            android:orientation="horizontal"
+            android:padding="5dp">
+        </LinearLayout>
     </HorizontalScrollView>
 
     <TextView
@@ -54,7 +60,15 @@
         android:layout_marginTop="10dp"
         android:text="精选专题" />
 
-    <include layout="@layout/topic_jingxuan" android:id="@+id/topfirst"/>
-    <include layout="@layout/topic_jingxuan" android:id="@+id/topsecond"/>
-    <include layout="@layout/topic_jingxuan" android:id="@+id/topthird"/>
+    <include
+        android:id="@+id/topfirst"
+        layout="@layout/topic_jingxuan" />
+
+    <include
+        android:id="@+id/topsecond"
+        layout="@layout/topic_jingxuan" />
+
+    <include
+        android:id="@+id/topthird"
+        layout="@layout/topic_jingxuan" />
 </LinearLayout>
