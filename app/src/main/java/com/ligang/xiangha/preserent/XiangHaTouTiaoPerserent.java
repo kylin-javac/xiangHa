@@ -42,8 +42,6 @@ public class XiangHaTouTiaoPerserent {
                         mvpView.Show(listViewBean,tag);
                     }
                 },path);
-
-
                 break;
         }
 

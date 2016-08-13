@@ -5,18 +5,19 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ligang.xiangha.R;
-import com.ligang.xiangha.adapter.LearnCookeAdapter;
+import com.ligang.xiangha.adapter.LearnCookAdapter;
 import com.ligang.xiangha.bean.ListViewBean;
 import com.ligang.xiangha.bean.XiangHaTouTiaoBean;
 import com.ligang.xiangha.preserent.XiangHaTouTiaoPerserent;
@@ -26,16 +27,22 @@ import com.ligang.xiangha.utils.MyImgViewCallback;
 import com.ligang.xiangha.view.MvpView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 学做菜的fragment
  */
-public class LearnCookeFragment extends Fragment implements MvpView {
+public class LearnCookeFragment extends Fragment implements MvpView, AbsListView.OnScrollListener {
 
 
     private ListView listView;
     private View head;
     private Context context;
+    private int num = 1;
+    boolean isLoding=false;
+    boolean isCanLoadMore=false;
+    List<ListViewBean.DataBean> listdata = new ArrayList<ListViewBean.DataBean>();
+    private LearnCookAdapter adapter;
 
     @Override
     public void onAttach(Activity activity) {
@@ -55,17 +62,11 @@ public class LearnCookeFragment extends Fragment implements MvpView {
         View view = inflater.inflate(R.layout.fragment_learn_cooke, container, false);
         listView = ((ListView) view.findViewById(R.id.listview));
         head = inflater.inflate(R.layout.learncook_header, null);
-        ArrayList<String> list = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            list.add("数据" + i);
-        }
-        LearnCookeAdapter myAdapter = new LearnCookeAdapter(list);
-        listView.setAdapter(myAdapter);
-        new XiangHaTouTiaoPerserent(this).getData(Goable.SERVER + Goable.XIANGHATOUXIAO,0);
-        new XiangHaTouTiaoPerserent(this).getData(Goable.SHOUYE_JINGCAISHENGHUO,1);
+        new XiangHaTouTiaoPerserent(this).getData(Goable.SERVER + Goable.XIANGHATOUXIAO, 0);
+        new XiangHaTouTiaoPerserent(this).getData(String.format(Goable.SHOUYE_JINGCAISHENGHUO, num), 1);
+        listView.setOnScrollListener(this);
         return view;
     }
-
 
 
     /**
@@ -146,8 +147,42 @@ public class LearnCookeFragment extends Fragment implements MvpView {
                 setDataHead((XiangHaTouTiaoBean) t, head, listView);
                 break;
             case 1:
-                Log.e("自定义标签", "类名==LearnCookeFragment" + "方法名==Show=====:" + ((ListViewBean) t));
+                if (num == 1) {
+                    List<ListViewBean.DataBean> data = ((ListViewBean) t).getData();
+                    listdata.addAll(data);
+                    adapter = new LearnCookAdapter(listdata);
+                    listView.setAdapter(adapter);
+                } else {
+                    List<ListViewBean.DataBean> data = ((ListViewBean) t).getData();
+                    listdata.addAll(data);
+                    adapter.notifyDataSetChanged();
+                }
                 break;
+
+        }
+
+    }
+
+    @Override
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+        if (isCanLoadMore && scrollState == SCROLL_STATE_IDLE) {
+            Toast.makeText(context, "正在拼命加载中.....", Toast.LENGTH_SHORT).show();
+            isLoding = true;
+            isCanLoadMore = false;
+            new XiangHaTouTiaoPerserent(this).getData(String.format(Goable.SHOUYE_JINGCAISHENGHUO, (++num)), 1);
+            isLoding = false;
+
+        }
+
+    }
+
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+        if (firstVisibleItem + visibleItemCount == totalItemCount) {
+            View childAt = view.getChildAt(visibleItemCount - 1);
+            if (!isLoding && childAt!=null&&childAt.getBottom() <= view.getHeight()) {
+                isCanLoadMore = true;
+            }
         }
 
     }
