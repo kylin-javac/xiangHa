@@ -50,8 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="5dp">
-        </LinearLayout>
+            android:padding="5dp"></LinearLayout>
     </HorizontalScrollView>
 
     <TextView
@@ -71,4 +70,10 @@
     <include
         android:id="@+id/topthird"
         layout="@layout/topic_jingxuan" />
+
+    <FrameLayout
+        android:id="@+id/container1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </LinearLayout>

@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * 学做菜的fragment
  */
-public class LearnCookeFragment extends Fragment implements MvpView, AbsListView.OnScrollListener {
+public class LearnCookeFragment extends Fragment implements MvpView, AbsListView.OnScrollListener, View.OnClickListener {
 
 
     private ListView listView;
@@ -43,6 +43,8 @@ public class LearnCookeFragment extends Fragment implements MvpView, AbsListView
     boolean isCanLoadMore=false;
     List<ListViewBean.DataBean> listdata = new ArrayList<ListViewBean.DataBean>();
     private LearnCookAdapter adapter;
+    private LinearLayout jinrjiazuo;
+    private View view;
 
     @Override
     public void onAttach(Activity activity) {
@@ -60,9 +62,15 @@ public class LearnCookeFragment extends Fragment implements MvpView, AbsListView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_learn_cooke, container, false);
+        if (view != null) {
+            return view;
+        }
+        view = inflater.inflate(R.layout.fragment_learn_cooke, container, false);
         listView = ((ListView) view.findViewById(R.id.listview));
         head = inflater.inflate(R.layout.learncook_header, null);
+        jinrjiazuo = (LinearLayout) head.findViewById(R.id.jinr);
+
+        jinrjiazuo.setOnClickListener(this);
         new XiangHaTouTiaoPerserent(this).getData(Goable.SERVER + Goable.XIANGHATOUXIAO, 0);
         new XiangHaTouTiaoPerserent(this).getData(String.format(Goable.SHOUYE_JINGCAISHENGHUO, num), 1);
         listView.setOnScrollListener(this);
@@ -185,6 +193,24 @@ public class LearnCookeFragment extends Fragment implements MvpView, AbsListView
                 isCanLoadMore = true;
             }
         }
+
+    }
+
+    @Override
+    public void onStop() {
+       view= getView();
+        super.onStop();
+    }
+
+    /**
+     * 跳转到今日佳作页面
+     * @param v
+     */
+    @Override
+    public void onClick(View v) {
+
+        jinRJiaZuoFragment jiaZuoFragment = new jinRJiaZuoFragment();
+        getFragmentManager().beginTransaction().addToBackStack(jiaZuoFragment.getClass().getSimpleName()).replace(R.id.container,jiaZuoFragment).commit();
 
     }
 }

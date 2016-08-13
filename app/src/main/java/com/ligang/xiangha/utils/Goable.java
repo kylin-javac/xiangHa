@@ -9,5 +9,6 @@ public interface Goable {
     String SERVER="http://api.xiangha.com/";
     String XIANGHATOUXIAO="main6/index/baseData?";
     String SHOUYE_JINGCAISHENGHUO = SERVER + "main6/index/getTieList?page=%d&pageTime=";
+    String JINJIAZUO=SERVER+"main6/index/todayGood?type=1&page=1";
 
 }
