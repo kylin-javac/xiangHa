@@ -54,6 +54,7 @@ public class LearnCookeFragment extends Fragment implements MvpView, AbsListView
     public void onAttach(Context context) {
         super.onAttach(context);
         context = context;
+
     }
 
     @Override
