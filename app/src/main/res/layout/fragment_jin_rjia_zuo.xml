@@ -18,7 +18,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:src="@mipmap/play_ctrl_back_bg"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:background="@null"
         android:id="@+id/back"/>
     <ListView
         android:layout_below="@+id/jiazuo"

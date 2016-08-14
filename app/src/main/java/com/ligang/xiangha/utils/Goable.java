@@ -13,4 +13,6 @@ public interface Goable {
     String QUANZI=SERVER+"main6/quan/staticData?";
     
 
+
+
 }
