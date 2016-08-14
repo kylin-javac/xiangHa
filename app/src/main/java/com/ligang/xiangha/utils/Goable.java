@@ -10,5 +10,7 @@ public interface Goable {
     String XIANGHATOUXIAO="main6/index/baseData?";
     String SHOUYE_JINGCAISHENGHUO = SERVER + "main6/index/getTieList?page=%d&pageTime=";
     String JINJIAZUO=SERVER+"main6/index/todayGood?type=1&page=1";
+    String QUANZI=SERVER+"main6/quan/staticData?";
+    
 
 }

@@ -5,11 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.RadioGroup;
 
 import com.ligang.xiangha.R;
+import com.ligang.xiangha.fragment.BBS.BbsFragment;
 import com.ligang.xiangha.fragment.LearnCookeFragment;
 
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
     private RadioGroup rg;
+    private LearnCookeFragment learnCookeFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +20,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         setContentView(R.layout.activity_main);
         rg = (RadioGroup) findViewById(R.id.rg);
         rg.setOnCheckedChangeListener(this);
-        LearnCookeFragment learnCookeFragment = new LearnCookeFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.container,learnCookeFragment).commit();
+        learnCookeFragment = new LearnCookeFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, learnCookeFragment).commit();
 
     }
 
@@ -28,8 +30,11 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId){
             case R.id.rb_learn_cooke:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, learnCookeFragment).commit();
                 break;
             case R.id.rb_bbs:
+                BbsFragment bbsFragment = new BbsFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container,bbsFragment).commit();
                 break;
             case R.id.rb_shop:
                 break;

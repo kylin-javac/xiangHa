@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ligang.xiangha.fragment.CaiPuFenLei.CaiPuiFenLeiFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="#f96652"
+        android:text="菜谱分类"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:id="@+id/caipu"
+        android:textColor="#fff"
+        android:layout_height="80dp" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:layout_marginLeft="20dp"
+        android:src="@mipmap/play_ctrl_back_bg"
+        android:layout_marginTop="22dp"
+        android:id="@+id/back"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_below="@+id/caipu"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:gravity="center"
+        android:id="@+id/caipu_sou"
+        android:hint="搜养生内容"
+        android:layout_height="40dp" />
+    <LinearLayout
+        android:layout_below="@+id/caipu_sou"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <ListView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:id="@+id/caipu_listview"
+            android:layout_height="match_parent">
+        </ListView>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="6"
+            android:id="@+id/caipu_fragment"
+            android:layout_height="match_parent">
+        </FrameLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

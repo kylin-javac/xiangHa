@@ -13,8 +13,10 @@
         android:textColor="#fff"
         android:layout_height="80dp" />
     <ImageButton
+        android:background="@null"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:src="@mipmap/play_ctrl_back_bg"
         android:layout_marginTop="22dp"
         android:id="@+id/back"/>

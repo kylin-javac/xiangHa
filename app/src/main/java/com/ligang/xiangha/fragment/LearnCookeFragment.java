@@ -20,6 +20,8 @@ import com.ligang.xiangha.R;
 import com.ligang.xiangha.adapter.LearnCookAdapter;
 import com.ligang.xiangha.bean.ListViewBean;
 import com.ligang.xiangha.bean.XiangHaTouTiaoBean;
+import com.ligang.xiangha.fragment.CaiPuFenLei.CaiPuiFenLeiFragment;
+import com.ligang.xiangha.fragment.MeiShiYangSheng.MeiShiYangShengFragment;
 import com.ligang.xiangha.preserent.XiangHaTouTiaoPerserent;
 import com.ligang.xiangha.utils.Goable;
 import com.ligang.xiangha.utils.MyAsynTask;
@@ -43,7 +45,6 @@ public class LearnCookeFragment extends Fragment implements MvpView, AbsListView
     boolean isCanLoadMore=false;
     List<ListViewBean.DataBean> listdata = new ArrayList<ListViewBean.DataBean>();
     private LearnCookAdapter adapter;
-    private LinearLayout jinrjiazuo;
     private View view;
 
     @Override
@@ -68,9 +69,18 @@ public class LearnCookeFragment extends Fragment implements MvpView, AbsListView
         view = inflater.inflate(R.layout.fragment_learn_cooke, container, false);
         listView = ((ListView) view.findViewById(R.id.listview));
         head = inflater.inflate(R.layout.learncook_header, null);
-        jinrjiazuo = (LinearLayout) head.findViewById(R.id.jinr);
-
+        //设置今日佳作模块
+        LinearLayout jinrjiazuo = (LinearLayout) head.findViewById(R.id.jinr);
         jinrjiazuo.setOnClickListener(this);
+
+        //设置美食养生模块
+        LinearLayout meishi = (LinearLayout) head.findViewById(R.id.meishi);
+        meishi.setOnClickListener(this);
+
+        //设置菜谱分类
+        LinearLayout fenlei = (LinearLayout) head.findViewById(R.id.fenlei);
+        fenlei.setOnClickListener(this);
+
         new XiangHaTouTiaoPerserent(this).getData(Goable.SERVER + Goable.XIANGHATOUXIAO, 0);
         new XiangHaTouTiaoPerserent(this).getData(String.format(Goable.SHOUYE_JINGCAISHENGHUO, num), 1);
         listView.setOnScrollListener(this);
@@ -208,9 +218,19 @@ public class LearnCookeFragment extends Fragment implements MvpView, AbsListView
      */
     @Override
     public void onClick(View v) {
-
-        jinRJiaZuoFragment jiaZuoFragment = new jinRJiaZuoFragment();
-        getFragmentManager().beginTransaction().addToBackStack(jiaZuoFragment.getClass().getSimpleName()).replace(R.id.container,jiaZuoFragment).commit();
-
+        switch (v.getId()) {
+            case R.id.meishi:
+            MeiShiYangShengFragment meiShiYangShengFragment = new MeiShiYangShengFragment();
+            getFragmentManager().beginTransaction().addToBackStack(meiShiYangShengFragment.getClass().getSimpleName()).replace(R.id.container, meiShiYangShengFragment).commit();
+                break;
+            case  R.id.fenlei:
+                CaiPuiFenLeiFragment caiPuiFenLeiFragment = new CaiPuiFenLeiFragment();
+                getFragmentManager().beginTransaction().addToBackStack(caiPuiFenLeiFragment.getClass().getSimpleName()).replace(R.id.container,caiPuiFenLeiFragment).commit();
+                break;
+            case  R.id.jinr:
+                jinRJiaZuoFragment jinRJiaZuoFragment = new jinRJiaZuoFragment();
+                getFragmentManager().beginTransaction().addToBackStack(jinRJiaZuoFragment.getClass().getSimpleName()).replace(R.id.container,jinRJiaZuoFragment).commit();
+                break;
+        }
     }
 }
